@@ -57,6 +57,7 @@ runs:
         pytest ${{ inputs.dagsdir }} --black --v
       shell: bash
 
+# only run tests defined in this repo
     - if: ${{ inputs.pytest == 'true' }}
       name: Test DAGs with PyTest
       run: |
