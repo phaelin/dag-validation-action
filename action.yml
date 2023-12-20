@@ -9,20 +9,16 @@ inputs:
   flake8:
     description: 'run Flake8'
     required: false
-    default: 'true'
+    default: 'false'
   black:
     description: 'run Black'
     required: false
-    default: 'true'
+    default: 'false'
   pytest:
     description: 'run tests with PyTest'
     required: false
-    default: 'true'
+    default: 'false'
   # Settings
-  testdir:
-    description: 'test directory'
-    required: false
-    default: 'tests'
   dagsdir:
     description: 'DAGs directory'
     required: false
@@ -38,6 +34,8 @@ runs:
         python-version: '3.11'
     - name: Install python dependencies
       run: |
+        pwd
+        ls -la ../../
         python -m pip install --upgrade pip
         pip install -r ${{ inputs.requirements }}
         pip check
@@ -63,7 +61,7 @@ runs:
       run: |
         pip install pytest
         pytest -v
-        pushd ${{ inputs.testdir }}
-        python3 -m pytest ${{ inputs.testdir }} -v
+        pushd tests
+        python3 -m pytest tests -v
         popd
       shell: bash
