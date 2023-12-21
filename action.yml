@@ -60,7 +60,7 @@ runs:
       run: |
         pip install pytest
         pytest -v
-        pushd tests
-        python3 -m pytest ${{ github.action_path }}/tests -v
+        pushd ${{ github.action_path }}/tests
+        python3 -m pytest dag_validation.py -v
         popd
       shell: bash
