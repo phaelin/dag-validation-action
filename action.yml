@@ -59,7 +59,7 @@ runs:
       name: Test DAGs with PyTest
       run: |
         pip install pytest
-        pytest -v
+        pytest --version
         pushd ${{ github.action_path }}/tests
         python -m pytest dag_validation.py -v
         popd
