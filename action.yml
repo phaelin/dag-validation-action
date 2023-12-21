@@ -50,7 +50,7 @@ runs:
       name: Run black for code compliance
       uses: psf/black@stable
       with:
-        options: "--check --verbose"
+        options: "--check --diff --verbose"
         summary: true
         src: ${{ inputs.dagsdir }}
 
