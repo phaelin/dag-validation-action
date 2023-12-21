@@ -61,6 +61,6 @@ runs:
         pip install pytest
         pytest -v
         pushd ${{ github.action_path }}/tests
-        python3 -m pytest dag_validation.py -v
+        python -m pytest dag_validation.py -v
         popd
       shell: bash
