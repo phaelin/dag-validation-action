@@ -48,10 +48,11 @@ runs:
 
     - if: ${{ inputs.black == 'true' }}
       name: Run black for code compliance
-      run: |
-        pip install pytest-black
-        pytest ${{ inputs.dagsdir }} --black --v
-      shell: bash
+      uses: psf/black@stable
+      with:
+        options: "--check --verbose"
+        summary: true
+        src: ${{ inputs.dagsdir }}
 
 # only run tests defined in this repo
     - if: ${{ inputs.pytest == 'true' }}
